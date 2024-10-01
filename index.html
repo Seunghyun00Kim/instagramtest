@@ -23,7 +23,8 @@
 </head>
 <body>
   <iframe 
-    src="https://www.instagram.com/reel/DAVeOnBhM4X/embed/?autoplay=1" 
+    id="instaEmbed"
+    src="https://www.instagram.com/reel/DAVeOnBhM4X/embed" 
     width="400" 
     height="480" 
     frameborder="0" 
@@ -32,5 +33,18 @@
     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" 
     allowfullscreen>
   </iframe>
+
+  <script>
+    // 인스타그램 임베드가 로드된 후 일정 시간 후에 시뮬레이션으로 재생 버튼 클릭
+    setTimeout(function() {
+      const iframe = document.getElementById('instaEmbed');
+      const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+      const playButton = innerDoc.querySelector('button'); // 재생 버튼 찾기
+
+      if (playButton) {
+        playButton.click(); // 버튼 클릭 시뮬레이션
+      }
+    }, 3000); // 3초 후 실행
+  </script>
 </body>
 </html>
